@@ -24,46 +24,49 @@ const TodoList = () => {
   };
 
   return (
-    <div>
-      <h1>To-Do List</h1>
-      <input
-        type="text"
-        value={newTodo}
-        onChange={(e) => setNewTodo(e.target.value)}
-      />
-      <button onClick={handleAddTodo}>Add</button>
-      <ul>
-        {todos.map((todo, index) => (
-          <li
-            key={index}
-            style={{
-              display: "flex",
-            }}
-          >
-            <div style={{ display: "flex", alignItems: "center" }}>
-              <input
-                type="checkbox"
-                checked={todo.checked}
-                onChange={() => handleToggleTodo(index)}
-              />
-              <span
-                style={{
-                  marginRight: "10px",
-                  textDecoration: todo.checked ? "line-through" : "none",
-                }}
-              >
-                {todo.text}
-              </span>
-            </div>
-            <button
-              style={{ marginTop: "5px", marginBottom: "5px" }}
-              onClick={() => handleDeleteTodo(index)}
+    <div className="container">
+      <div className="todo-app">
+        <h1>To-Do List</h1>
+        <input
+          type="text"
+          value={newTodo}
+          onChange={(e) => setNewTodo(e.target.value)}
+        />
+        <button onClick={handleAddTodo}>Add</button>
+        <ul>
+          {todos.map((todo, index) => (
+            <li
+              key={index}
+              style={{
+                display: "flex",
+              }}
             >
-              Delete
-            </button>
-          </li>
-        ))}
-      </ul>
+              <div style={{ display: "flex", alignItems: "center" }}>
+                <input
+                  type="checkbox"
+                  checked={todo.checked}
+                  onChange={() => handleToggleTodo(index)}
+                />
+                <span
+                  className="list-item"
+                  style={{
+                    marginRight: "10px",
+                    textDecoration: todo.checked ? "line-through" : "none",
+                  }}
+                >
+                  {todo.text}
+                </span>
+              </div>
+              <button
+                style={{ marginTop: "5px", marginBottom: "5px" }}
+                onClick={() => handleDeleteTodo(index)}
+              >
+                Delete
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 };
